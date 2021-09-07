@@ -1,7 +1,7 @@
-# Glove-master
+# Glove-master for Gujarati Language
 
 GloVe: Global Vectors for Word Representation
-If you want word vectors trained on massive web datasets, you need only download one of these text files! Pre-trained word vectors are made available under the Public Domain Dedication and License.
+If you want word vectors trained on massive web datasets, you need to download one of the publicly available corpus or crawl wikipedia for Gujarati data. Pre-trained word vectors are made available under the Public Domain Dedication and License.
 
 # Train word vectors on a new corpus
 
