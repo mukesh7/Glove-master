@@ -1,0 +1,30 @@
+//Glove Master
+cd GloVe-master
+make 
+./demo.sh 
+python eval/python/evaluate.py --vocab_file vocab.txt --vectors_file vectors.txt --test_file gujtest1.txt
+python eval/python/evaluate.py --vocab_file vocab.txt --vectors_file vectors.txt --test_file gujtest2.txt
+python eval/python/evaluate.py --vocab_file vocab.txt --vectors_file vectors.txt --test_file gujtest3.txt
+python eval/python/evaluate.py --vocab_file vocab.txt --vectors_file vectors.txt --test_file test_temp.txt
+
+cd ..
+
+python word2vec.py -train wiki_news.txt -model cbow_vectors.txt -cbow 1 -negative 0 -dim 150 -batch 20000 -alpha 0.075 -window 5 -min-count 10 -processes 8 -binary 0
+python process_cbow.py
+mv cbow_vectors.txt GloVe-master/
+cd GloVe-master
+python eval/python/evaluate.py --vocab_file cbow_vocab.txt --vectors_file cbow_vectors.txt --test_file gujtest1.txt
+python eval/python/evaluate.py --vocab_file cbow_vocab.txt --vectors_file cbow_vectors.txt --test_file gujtest2.txt
+python eval/python/evaluate.py --vocab_file cbow_vocab.txt --vectors_file cbow_vectors.txt --test_file gujtest3.txt
+python eval/python/evaluate.py --vocab_file cbow_vocab.txt --vectors_file cbow_vectors.txt --test_file test_temp.txt
+cd ..
+
+python word2vec.py -train wiki_news.txt -model skip_vectors.txt -cbow 0 -negative 0 -dim 50 -batch 10000 -alpha 0.05 -window 5 -min-count 10 -processes 8 -binary 0
+python process_skipgram.py
+mv skip_vectors.txt GloVe-master/
+cd GloVe-master
+python eval/python/evaluate.py --vocab_file skip_vocab.txt --vectors_file skip_vectors.txt --test_file gujtest1.txt
+python eval/python/evaluate.py --vocab_file skip_vocab.txt --vectors_file skip_vectors.txt --test_file gujtest2.txt
+python eval/python/evaluate.py --vocab_file skip_vocab.txt --vectors_file skip_vectors.txt --test_file gujtest3.txt
+python eval/python/evaluate.py --vocab_file skip_vocab.txt --vectors_file skip_vectors.txt --test_file test_temp.txt
+cd ..
