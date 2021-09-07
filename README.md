@@ -7,9 +7,10 @@ If you want word vectors trained on massive web datasets, you need only download
 
 If the web datasets above don't match the semantics of your end use case, you can train word vectors on your own corpus.
 
+```
 $ git clone https://github.com/stanfordnlp/glove
 $ cd glove && make
 $ ./demo.sh
-
+```
 
 The demo.sh script you have to give path to CORPUS and VOCAB File. It collects unigram counts, constructs and shuffles cooccurrence data, and trains a simple version of the GloVe model. It also runs a word analogy evaluation script in python to verify word vector quality. More details about training on your own corpus can be found by reading demo.sh or the src/README.md
